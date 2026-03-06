@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:juliebergeronhypnose.com)",
+      "Bash(Out-Null)",
+      "Bash(Write-Host \"Dossiers créés\")",
+      "Bash(powershell -Command:*)",
+      "Bash(node:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(powershell.exe -Command \"Test-Path ''C:\\\\hypnose\\\\services''\")",
+      "Bash(powershell.exe -NoProfile -ExecutionPolicy Bypass -Command \"\n$nav = @''\n<div class=\"\"barre-info\"\">\n  <a href=\"\"mailto:info@juliebergeronhypnose.com\"\">info@juliebergeronhypnose.com</a> &nbsp;&middot;&nbsp; <a href=\"\"tel:5144620486\"\">514-462-0486</a> &nbsp;&middot;&nbsp; 545 Mont&eacute;e Masson, Terrebonne\n</div>\n<nav class=\"\"nav\"\" aria-label=\"\"Navigation principale\"\">\n  <div class=\"\"nav-inner\"\">\n    <a href=\"\"../index.html\"\" class=\"\"nav-logo\"\"><img src=\"\"../images/logo.png\"\" alt=\"\"Julie Bergeron Hypnose\"\" /></a>\n    <ul class=\"\"nav-links\"\">\n      <li><a href=\"\"../index.html\"\">Accueil</a></li>\n      <li class=\"\"nav-dropdown\"\"><a href=\"\"../index.html#services\"\">Services &#9662;</a>\n        <ul class=\"\"dropdown-menu\"\">\n          <li><a href=\"\"stress-anxiete.html\"\">Gestion du stress et de l''''anxi&eacute;t&eacute;</a></li>\n          <li><a href=\"\"gestion-emotions.html\"\">Gestion des &eacute;motions</a></li>\n          <li><a href=\"\"gestion-douleur.html\"\">Gestion de la douleur</a></li>\n          <li><a href=\"\"gestion-poids.html\"\">Gestion du poids</a></li>\n          <li><a href=\"\"estime-de-soi.html\"\">Estime de soi et confiance</a></li>\n          <li><a href=\"\"femmes-enceintes.html\"\">Femmes enceintes</a></li>\n          <li><a href=\"\"enfants-adolescents.html\"\">Enfants et adolescents</a></li>\n          <li><a href=\"\"sportif-haut-niveau.html\"\">Sportif de haut niveau</a></li>\n          <li><a href=\"\"aide-changements.html\"\">Aide aux changements</a></li>\n          <li><a href=\"\"association-formations.html\"\">Formations et accr&eacute;ditations</a></li>\n        </ul>\n      </li>\n      <li><a href=\"\"../prendre-rendez-vous.html\"\">Prendre RDV</a></li>\n      <li><a href=\"\"../a-propos.html\"\">&Agrave; propos</a></li>\n      <li><a href=\"\"../contact.html\"\">Contact</a></li>\n      <li><a href=\"\"../prendre-rendez-vous.html\"\" class=\"\"nav-cta\"\">R&eacute;server &rarr;</a></li>\n    </ul>\n    <button class=\"\"nav-toggle\"\" aria-label=\"\"Ouvrir le menu\"\" aria-expanded=\"\"false\"\"><span></span><span></span><span></span></button>\n  </div>\n</nav>\n''@\n\nWrite-Host ''nav variable set OK''\n\")",
+      "Bash(printf:*)",
+      "Bash(powershell.exe -NoProfile -ExecutionPolicy Bypass -File /tmp/test.ps1)",
+      "Bash(powershell.exe -NoProfile -ExecutionPolicy Bypass -Command \"\n$testContent = ''hello world''\n[System.IO.File]::WriteAllText\\(''C:\\\\hypnose\\\\services\\\\test.html'', $testContent, [System.Text.Encoding]::UTF8\\)\nWrite-Host ''Written OK''\n\")",
+      "Bash(python3:*)",
+      "Bash(powershell.exe -NoProfile -ExecutionPolicy Bypass -Command \"\n# Test: write a simple HTML file using string concatenation\n$title = ''Test''\n$content = ''<!DOCTYPE html>'' + [char]10 + ''<html><head><title>'' + $title + ''</title></head><body>Test</body></html>''\n[System.IO.File]::WriteAllText\\(''C:\\\\hypnose\\\\services\\\\test.html'', $content, [System.Text.Encoding]::UTF8\\)\nWrite-Host ''Done''\n\")",
+      "Bash(powershell.exe -NoProfile -ExecutionPolicy Bypass -Command \"\n# Test here-string inside -Command with proper escaping\n$test = @''\nHello World\nIt''s a test\n''@\nWrite-Host $test\n\")",
+      "Bash(dir:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(cmd /c \"where python\")",
+      "Bash(cmd /c \"where python3\")",
+      "Bash(cmd /c \"where python.exe python3.exe node.exe\")",
+      "Bash(cmd /c \"where node.exe & where python.exe & where python3.exe & where php.exe\")",
+      "Bash(cmd /c \"powershell -Command \"\"Get-Command python,node,php -ErrorAction SilentlyContinue | Select-Object Name,Source\"\"\")",
+      "Bash(cmd /c \"start powershell -NoExit -ExecutionPolicy Bypass -File C:\\\\hypnose\\\\serveur.ps1\")",
+      "Bash(cmd /c \"curl -s -o nul -w \"\"%{http_code}\"\" http://localhost:3000/\")",
+      "Bash(cmd /c \"curl http://localhost:3000/\")",
+      "Bash(git init)",
+      "Bash(git remote add origin https://github.com/denisstgermain/jbweb.git)",
+      "Bash(git add -A)"
+    ]
+  }
+}

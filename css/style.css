@@ -1,0 +1,1222 @@
+/* ============================================================
+   JULIE BERGERON HYPNOSE
+   Design : copie fidèle du site WordPress (thème Uncode)
+   Palette : mauve/violet WordPress — AUCUNE référence à C:\siteweb
+============================================================ */
+
+/* --- RESET & BASE --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --noir:           #1a1a1a;
+  --blanc:          #ffffff;
+  --violet-titre:   #3d1a5e;
+  --violet-fonce:   #4a1a6b;
+  --violet-footer:  #3d1060;
+  --mauve-pale:     #ede8f2;
+  --texte:          #555555;
+  --hero-overlay:   rgba(0, 0, 0, 0.45);
+  --btn-hero-bg:    #ffffff;
+  --btn-hero-text:  #1a1a1a;
+  --btn-bg:         #3d1a5e;
+  --btn-text:       #ffffff;
+  --font-titre: 'Playfair Display', Georgia, serif;
+  --font-corps: 'Lato', 'Helvetica Neue', sans-serif;
+  --transition: 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-corps);
+  background-color: var(--blanc);
+  color: var(--texte);
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ============================================================
+   BARRE INFO (top)
+============================================================ */
+.barre-info {
+  background: var(--noir);
+  color: var(--blanc);
+  font-family: var(--font-corps);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.barre-info a {
+  color: var(--blanc);
+  opacity: 0.85;
+  transition: opacity var(--transition);
+}
+
+.barre-info a:hover {
+  opacity: 1;
+}
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+.nav {
+  background: var(--blanc);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: box-shadow var(--transition);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 16px 40px 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Logo centré */
+.nav-logo {
+  display: block;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.nav-logo img {
+  max-height: 80px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Liens de menu */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  list-style: none;
+}
+
+.nav-links > li > a {
+  font-family: var(--font-corps);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--noir);
+  padding: 8px 16px;
+  display: block;
+  transition: color var(--transition);
+  white-space: nowrap;
+}
+
+.nav-links > li > a:hover,
+.nav-links > li > a.active {
+  color: var(--violet-titre);
+}
+
+/* Bouton CTA nav */
+.nav-links .nav-cta {
+  background: var(--violet-titre);
+  color: var(--blanc) !important;
+  padding: 8px 20px !important;
+  border-radius: 2px;
+  margin-left: 8px;
+  transition: background var(--transition), color var(--transition);
+}
+
+.nav-links .nav-cta:hover {
+  background: var(--violet-fonce);
+  color: var(--blanc) !important;
+}
+
+/* Dropdown Services */
+.nav-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--blanc);
+  min-width: 280px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-top: 2px solid var(--violet-titre);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+  z-index: 200;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li a {
+  font-family: var(--font-corps);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--noir);
+  padding: 10px 20px;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background var(--transition), color var(--transition);
+}
+
+.dropdown-menu li:last-child a {
+  border-bottom: none;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a.active {
+  background: var(--mauve-pale);
+  color: var(--violet-titre);
+}
+
+/* Hamburger */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--noir);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.nav.scrolled {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.10);
+}
+
+/* ============================================================
+   HERO — plein écran avec photo + overlay + Gandhi
+============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../images/header.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay);
+  z-index: 1;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  padding: 40px 24px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.hero-attribution {
+  font-family: var(--font-corps);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 24px;
+  display: block;
+}
+
+.hero-quote {
+  font-family: var(--font-titre);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+  color: var(--blanc);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.hero-divider {
+  width: 50px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 24px auto;
+}
+
+.hero-sub {
+  font-family: var(--font-corps);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 40px;
+}
+
+.btn-hero {
+  display: inline-block;
+  background: var(--btn-hero-bg);
+  color: var(--btn-hero-text);
+  font-family: var(--font-corps);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 14px 40px;
+  border-radius: 2px;
+  border: 2px solid var(--blanc);
+  transition: background var(--transition), color var(--transition);
+}
+
+.btn-hero:hover {
+  background: transparent;
+  color: var(--blanc);
+}
+
+/* ============================================================
+   HERO SOUS-PAGES (fond mauve pâle, pas de photo)
+============================================================ */
+.page-hero {
+  background: var(--mauve-pale);
+  padding: 80px 24px 70px;
+  text-align: center;
+}
+
+.page-hero-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.page-hero .lune-ornement {
+  display: block;
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.page-hero h1 {
+  font-family: var(--font-titre);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--violet-titre);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.page-hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.page-hero .hero-sub {
+  font-family: var(--font-corps);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--texte);
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   SECTIONS GÉNÉRALES
+============================================================ */
+.section {
+  padding: 80px 24px;
+  background: var(--blanc);
+}
+
+.section-alt {
+  background: var(--mauve-pale);
+}
+
+.section-violet {
+  background: var(--violet-fonce);
+}
+
+.section-violet .section-eyebrow,
+.section-violet h2,
+.section-violet p,
+.section-violet li {
+  color: var(--blanc);
+}
+
+.section-violet .divider-or {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-eyebrow {
+  display: block;
+  font-family: var(--font-corps);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--violet-titre);
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-family: var(--font-titre);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--violet-titre);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-family: var(--font-titre);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--violet-titre);
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-family: var(--font-corps);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--violet-titre);
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--texte);
+  margin-bottom: 16px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Divider or */
+.divider-or {
+  display: block;
+  width: 50px;
+  height: 2px;
+  background: var(--violet-titre);
+  margin: 16px auto 0;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   SECTION "QUI SUIS-JE" — 2 colonnes
+============================================================ */
+.qui-suis-je {
+  display: grid;
+  grid-template-columns: 40% 55%;
+  gap: 5%;
+  align-items: center;
+}
+
+.qui-suis-je-photo img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%);
+  display: block;
+}
+
+.qui-suis-je-texte h2 {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.qui-suis-je-texte p {
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--texte);
+}
+
+/* ============================================================
+   SECTION "L'HYPNOSE TRANSFORMATRICE" — 2 colonnes
+============================================================ */
+.hypnose-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hypnose-cols img {
+  width: 100%;
+  height: auto;
+}
+
+.hypnose-cols-texte h2 {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   GRILLE DE SERVICES (cartes)
+============================================================ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 28px;
+}
+
+.service-card {
+  background: var(--blanc);
+  border: 1px solid rgba(61, 26, 94, 0.1);
+  padding: 28px 24px;
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  border-radius: 2px;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(61, 26, 94, 0.12);
+  border-color: var(--violet-titre);
+}
+
+.service-card .card-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  color: var(--violet-titre);
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--texte);
+  margin-bottom: 16px;
+}
+
+.service-card a {
+  font-family: var(--font-corps);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--violet-titre);
+  border-bottom: 1px solid var(--violet-titre);
+  padding-bottom: 2px;
+  transition: color var(--transition);
+}
+
+.service-card a:hover {
+  color: var(--violet-fonce);
+  border-color: var(--violet-fonce);
+}
+
+/* Grille cards (pour sous-pages) */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+.card {
+  background: var(--blanc);
+  border: 1px solid rgba(61, 26, 94, 0.1);
+  padding: 28px 24px;
+  text-align: center;
+  border-radius: 2px;
+}
+
+.card-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 14px;
+}
+
+/* ============================================================
+   SECTION FORMATIONS (fond violet foncé)
+============================================================ */
+.formations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.formation-item {
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-corps);
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.formation-item::before {
+  content: '— ';
+  opacity: 0.5;
+}
+
+/* ============================================================
+   LISTE BIENFAITS (sous-pages services)
+============================================================ */
+.liste-bienfaits {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0;
+  max-width: 900px;
+  margin: 0 auto;
+  list-style: none;
+}
+
+.liste-bienfaits li {
+  font-family: var(--font-corps);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 12px 20px 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.liste-bienfaits li::before {
+  content: '✓';
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ============================================================
+   STEPS (déroulement d'une séance)
+============================================================ */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.step-num {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: var(--violet-titre);
+  color: var(--blanc);
+  font-family: var(--font-titre);
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.step-content h4 {
+  font-size: 1.05rem;
+  color: var(--violet-titre);
+  margin-bottom: 6px;
+}
+
+.step-content p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--texte);
+  margin: 0;
+}
+
+/* ============================================================
+   BLOC TEXTE (générique)
+============================================================ */
+.block-texte {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.block-texte p {
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--texte);
+}
+
+/* Section alt texte blanc */
+.section-violet .block-texte p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ============================================================
+   LOI 21
+============================================================ */
+.loi21 {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--mauve-pale);
+  border-left: 3px solid var(--violet-titre);
+  padding: 20px 24px;
+  font-size: 14px;
+  color: var(--texte);
+  line-height: 1.7;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ============================================================
+   CTA SECTION
+============================================================ */
+.section-cta {
+  background: var(--violet-fonce);
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.section-cta-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-cta .section-eyebrow {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.section-cta h2 {
+  color: var(--blanc);
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  margin-bottom: 16px;
+}
+
+.section-cta p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+/* ============================================================
+   BOUTONS
+============================================================ */
+.btn {
+  display: inline-block;
+  font-family: var(--font-corps);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border-radius: 2px;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.btn-blanc {
+  background: var(--blanc);
+  color: var(--violet-titre);
+  border-color: var(--blanc);
+}
+
+.btn-blanc:hover {
+  background: transparent;
+  color: var(--blanc);
+  border-color: var(--blanc);
+}
+
+.btn-violet {
+  background: var(--violet-titre);
+  color: var(--blanc);
+  border-color: var(--violet-titre);
+}
+
+.btn-violet:hover {
+  background: var(--violet-fonce);
+  border-color: var(--violet-fonce);
+}
+
+/* Alias btn-or → btn-blanc dans section cta */
+.btn-or {
+  background: var(--blanc);
+  color: var(--violet-titre);
+  border-color: var(--blanc);
+}
+
+.btn-or:hover {
+  background: transparent;
+  color: var(--blanc);
+  border-color: var(--blanc);
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer {
+  background: var(--violet-footer);
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 60px 24px 40px;
+}
+
+.footer-logo {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.footer-logo img {
+  max-height: 70px;
+  margin: 0 auto 12px;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+.footer-logo-text {
+  font-family: var(--font-titre);
+  font-size: 1.3rem;
+  color: var(--blanc);
+  letter-spacing: 0.05em;
+}
+
+.footer-slogan {
+  font-family: var(--font-titre);
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 24px;
+}
+
+.footer-localisation {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 24px;
+  line-height: 1.8;
+}
+
+.footer-localisation a {
+  color: rgba(255, 255, 255, 0.65);
+  transition: color var(--transition);
+}
+
+.footer-localisation a:hover {
+  color: var(--blanc);
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-bottom: 28px;
+  list-style: none;
+}
+
+.footer-nav a {
+  font-family: var(--font-corps);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--transition);
+}
+
+.footer-nav a:hover {
+  color: var(--blanc);
+}
+
+.footer-mention {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ============================================================
+   REVEAL ON SCROLL
+============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   FORMULAIRES (contact, rendez-vous)
+============================================================ */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-corps);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--violet-titre);
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: var(--font-corps);
+  font-size: 15px;
+  color: var(--noir);
+  background: var(--blanc);
+  border: 1px solid rgba(61, 26, 94, 0.2);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--violet-titre);
+}
+
+.form-group textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* FAQ Accordéon */
+.faq-item {
+  border-bottom: 1px solid rgba(61, 26, 94, 0.12);
+  padding: 16px 0;
+}
+
+.faq-question {
+  font-family: var(--font-titre);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--violet-titre);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.faq-question::after {
+  content: '+';
+  font-size: 1.4rem;
+  color: var(--violet-titre);
+  flex-shrink: 0;
+}
+
+.faq-reponse {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--texte);
+  margin-top: 12px;
+}
+
+/* Info box */
+.info-box {
+  background: var(--mauve-pale);
+  border-left: 3px solid var(--violet-titre);
+  padding: 20px 24px;
+  border-radius: 0 2px 2px 0;
+  margin-bottom: 20px;
+}
+
+.info-box p {
+  font-size: 15px;
+  color: var(--texte);
+  margin: 0;
+}
+
+/* Carte contact */
+.contact-infos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.contact-info-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.contact-info-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.contact-info-texte strong {
+  display: block;
+  font-family: var(--font-corps);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--violet-titre);
+  margin-bottom: 4px;
+}
+
+.contact-info-texte p {
+  font-size: 15px;
+  color: var(--texte);
+  margin: 0;
+}
+
+/* ============================================================
+   RESPONSIVE MOBILE
+============================================================ */
+@media (max-width: 900px) {
+  .qui-suis-je {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hypnose-cols {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .contact-infos {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Nav mobile */
+  .nav-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 20px;
+    position: relative;
+  }
+
+  .nav-logo {
+    margin-bottom: 0;
+  }
+
+  .nav-logo img {
+    max-height: 50px;
+  }
+
+  .nav-toggle {
+    display: flex;
+    position: static;
+    transform: none;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--blanc);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 999;
+    padding: 8px 0 16px;
+    gap: 0;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links > li > a {
+    padding: 12px 24px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-links .nav-cta {
+    margin: 12px 24px 0;
+    text-align: center;
+    border-radius: 2px;
+  }
+
+  /* Dropdown mobile */
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: hidden;
+    transform: none;
+    max-height: 0;
+    overflow: hidden;
+    box-shadow: none;
+    border-top: none;
+    border-left: 3px solid var(--violet-titre);
+    margin-left: 24px;
+    transition: max-height 0.3s ease, visibility 0.3s ease;
+  }
+
+  .nav-dropdown.open .dropdown-menu {
+    visibility: visible;
+    max-height: 500px;
+  }
+
+  .dropdown-menu li a {
+    font-size: 12px;
+    padding: 10px 16px;
+  }
+
+  /* Hero */
+  .hero {
+    background-attachment: scroll;
+    min-height: 100svh;
+  }
+
+  /* Sections */
+  .section {
+    padding: 56px 20px;
+  }
+
+  .section-cta {
+    padding: 56px 20px;
+  }
+
+  .page-hero {
+    padding: 56px 20px 48px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .formations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .liste-bienfaits {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .barre-info {
+    font-size: 10px;
+    padding: 7px 12px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero-quote {
+    font-size: 1.5rem;
+  }
+
+  .steps {
+    gap: 24px;
+  }
+
+  .step {
+    gap: 16px;
+  }
+
+  .step-num {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+}
