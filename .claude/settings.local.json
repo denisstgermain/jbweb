@@ -28,7 +28,12 @@
       "Bash(cmd /c \"curl http://localhost:3000/\")",
       "Bash(git init)",
       "Bash(git remote add origin https://github.com/denisstgermain/jbweb.git)",
-      "Bash(git add -A)"
+      "Bash(git add -A)",
+      "Bash(git commit:*)",
+      "Bash(git config user.email \"denisstgermain@github.com\")",
+      "Bash(git config user.name \"Denis St-Germain\")",
+      "Bash(git push -u origin master)",
+      "Bash(git push)"
     ]
   }
 }

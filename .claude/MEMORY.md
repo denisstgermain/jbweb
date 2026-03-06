@@ -1,5 +1,11 @@
 # Projet Julie Bergeron Hypnose - Notes
 
+## Workflow de travail
+- **Toujours démarrer le serveur HTTP** au début de chaque session
+- Quand le client dit **"ça fonctionne"** → commit + push automatique sur GitHub (https://github.com/denisstgermain/jbweb) puis passer au point suivant
+- **Commits** : message clair et descriptif de ce qui a été fait, **pas de mention de Claude comme co-auteur**
+- Repo GitHub : https://github.com/denisstgermain/jbweb.git
+
 ## Serveur local
 - **Toujours démarrer le serveur HTTP** au début de chaque session de travail
 - Commande : `powershell -ExecutionPolicy Bypass -File C:\hypnose\serveur.ps1`
