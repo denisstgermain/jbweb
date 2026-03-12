@@ -1251,11 +1251,22 @@ p:last-child {
   border: 2px dashed #c4b0e0;
 }
 
+.bienfait-photo {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 .bienfait-item h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1.2rem;
   color: #3d1f6e;
   margin: 0;
+}
+
+.bienfait-item:last-child:nth-child(3n+1) {
+  grid-column: 2 / 3;
 }
 
 .bienfait-item p {
