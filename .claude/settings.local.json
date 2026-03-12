@@ -33,7 +33,14 @@
       "Bash(git config user.email \"denisstgermain@github.com\")",
       "Bash(git config user.name \"Denis St-Germain\")",
       "Bash(git push -u origin master)",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(where python:*)",
+      "Bash(where python3:*)",
+      "Bash(where node:*)",
+      "Bash(where php:*)",
+      "Bash(where py:*)",
+      "Bash(ls /c/Python*)",
+      "Read(//c/Users/jonat/AppData/Local/Programs/**)"
     ]
   }
 }

@@ -1,5 +1,5 @@
 # Serveur HTTP simple pour juliebergeronhypnose
-$port = 3000
+$port = if ($env:PORT) { $env:PORT } else { 3000 }
 $root = "C:\hypnose"
 $listener = New-Object System.Net.HttpListener
 $listener.Prefixes.Add("http://localhost:$port/")

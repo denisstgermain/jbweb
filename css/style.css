@@ -1220,3 +1220,47 @@ p:last-child {
     font-size: 1.1rem;
   }
 }
+
+/* ============================================================
+   BIENFAITS DE L'HYPNOSE — GRILLE
+============================================================ */
+.bienfaits-grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.bienfait-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bienfait-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #ede8f5;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9b7ec8;
+  font-size: 0.85rem;
+  font-style: italic;
+  border: 2px dashed #c4b0e0;
+}
+
+.bienfait-item h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #3d1f6e;
+  margin: 0;
+}
+
+.bienfait-item p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #444;
+  margin: 0;
+}
