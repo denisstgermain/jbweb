@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 85" fill="none" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Pétale central (tall, rounded top) -->
+  <path d="M50 63 C44 57 40 42 42 24 C44 10 50 5 50 5 C50 5 56 10 58 24 C60 42 56 57 50 63Z"/>
+  <!-- Pétale gauche (oval tilté gauche) -->
+  <path d="M47 61 C40 57 21 50 20 30 C19 14 33 10 40 20 C45 28 48 48 47 61Z"/>
+  <!-- Pétale droit (miroir) -->
+  <path d="M53 61 C60 57 79 50 80 30 C81 14 67 10 60 20 C55 28 52 48 53 61Z"/>
+  <!-- Base en W -->
+  <path d="M30 68 Q40 77 50 68 Q60 77 70 68"/>
+</svg>
