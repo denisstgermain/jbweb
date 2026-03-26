@@ -40,7 +40,18 @@
       "Bash(where php:*)",
       "Bash(where py:*)",
       "Bash(ls /c/Python*)",
-      "Read(//c/Users/jonat/AppData/Local/Programs/**)"
+      "Read(//c/Users/jonat/AppData/Local/Programs/**)",
+      "Bash(identify /c/hypnose/images/logo.png)",
+      "Bash(for f:*)",
+      "Bash(do)",
+      "Bash(echo \"=== $f ===\")",
+      "Read(//c/hypnose/services/**)",
+      "Bash(done)",
+      "Bash(grep -rin \"lundi\\\\|heures\\\\|ouverture\\\\|19h\" /c/hypnose/*.html /c/hypnose/services/*.html)",
+      "WebFetch(domain:tidycal.com)",
+      "WebSearch",
+      "Bash(git add:*)",
+      "Bash(git push:*)"
     ]
   }
 }
